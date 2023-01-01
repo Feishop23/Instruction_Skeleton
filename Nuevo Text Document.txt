@@ -1,0 +1,88 @@
+>Se crea la carpeta.
+
+>Abres la terminar y pones los siguientes comandos.
+//npm init --y  ===  te va a crear automaticamente el package.js
+
+>Creamos estos documentos en la carpeta.
+// src  === carpeta
+// .env  === configuracion de la base de datos
+// .gitignore  === vas a poner >Node_module/  esto no se tiene que subir al repositorio por que luego te doxean
+
+>Estas capertas tienen que ir dentro del src.
+// utils
+
+/> database.js
+
+>>Esto tiene que ir dentro de database.js.------------------------------------------------------------------------
+
+const { Sequelize} = require('sequelize')
+
+const db = new Sequelize({
+    dialect: 'postgres',  //Esto lo dejas definido asi ya que es como viene predeterminado en el Postgres
+    host: 'localhost',    //Esto lo dejas definido asi ya que es como viene predeterminado en el Postgres
+    username: 'postgres', //Esto lo dejas definido asi ya que es como viene predeterminado en el Postgres
+    password: 'root',     //Esto lo dejas definido asi ya que es como viene predeterminado en el Postgres
+    database: 'Users' //Aqui pones el nombre de la base de datos que esta dentro de la carpeta Postgress en el dbeaver.
+
+
+})
+
+module.exports = db
+-------------------------------------------------------------------------------------------------------------------
+
+//app.js
+>>Esto tiene que ir dentro de app.js para que te puedas conectar con la base de datos.-----------------------------
+
+const express = require('express')
+
+const db = require('./utils/database')
+const initModels = require('./models/initModels')
+const app = express()
+
+
+const PORT = 9000
+
+db.authenticate()
+.then(()=> console.log('DB authentication successfully'))
+.catch((err) => console.log(err))
+
+db.sync()
+.then(() => console.log('Database synced'))
+.catch(err => console.log(err))
+
+initModels()
+
+app.use(express.json())
+
+app.listen(PORT, ()=> {
+    console.log(`activo ${PORT}`)
+})
+--------------------------------------------------------------------------------------------------------------------
+
+//models
+/>initModels.js
+>>Esto tiene que ir dentro del initModels.js------------------------------------------------------------------------
+
+const "Poner nombre de la tabla que va a salir en el dbeaver" = require('./example.models')
+
+
+const initModels = () => {
+ "Poner nombre de la tabla que va a salir en el dbeaver"
+}
+
+module.exports = initModels
+--------------------------------------------------------------------------------------------------------------------
+
+>Instalamos las otras dependecias en la terminal.
+--Con estas dependecias vas a poder conectarte con la base de datos de postgres
+// npm install express
+// npm install uuid
+// npm install sequelize
+// npm install pg pg-hstore
+// npm install detenv
+
+>Despues te diriges a la documentacion de packge.json y pones en el script
+--Vas a escribir en la lista esto:
+// "start": "node ./src/app.js"
+// "dev": "nodemon ./src/app.js"
+

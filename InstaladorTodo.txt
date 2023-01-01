@@ -1,0 +1,80 @@
+    -copia y pega en el terminal
+npm init --y
+npm install express uuid dotenv sequelize pg pg-hstore
+npm i -D nodemon
+git init
+npm i bcrypt
+
+>despues de vas al documento package.json y pones en el scripts
+--> "start": "node ./src/app.js", "dev": "nodemon ./src/app.js"
+
+    -Luego se crea en documentos
+
+carpeta src
+.env
+.gitignore
+example.env
+
+    -En la seccion de capertas creas estos archivos con este tipo de estructura
+
+>>src
+>auth
+-auth.controller.js
+-auth.router.js
+-auth.services.js
+
+>categories
+-categories.controller.js
+-categories.router.js
+-categories.services.js
+-categories.models.js
+
+>middlewares
+-auth.middlewares.js
+-role.middlewares.js
+
+>models
+-catergories.router
+-initModels.js
+-postd.models.js
+-users.models.js
+
+>posts
+-posts.controllers.js
+-posts.router.js
+-posts.services.js
+
+>users
+-users.router.js
+-users.controllers.js
+-users.services.js
+
+>utils
+-crypto.js
+-database.js
+
+
+->app.js
+->config.js
+
+
+
+    -Orden
+1. app.js
+2. .env
+3. config.js
+4. database.js
+5. modelos
+6. controladores
+7. servicios
+8. rutas
+
+
+>Para que puedas pasar un repositorio que has clonado a otro repositorio propio 
+-  git remote set-url origin  'pegas el url del nuevo repositorio'
+-  git push
+
+
+> tienes que instalar esto para el skeleton
+-npm i 
+-npm i -D nodemon
